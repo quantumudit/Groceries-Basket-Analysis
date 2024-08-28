@@ -1,0 +1,4 @@
+data_processor:
+  external_data_path: data/external/groceries.csv
+  transactions_data_path: data/processed/groceries_transactions.csv
+  basket_data_path: data/processed/groceries_basket.csv
