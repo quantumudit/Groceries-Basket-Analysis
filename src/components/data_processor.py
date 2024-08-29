@@ -45,7 +45,7 @@ class DataProcessor:
             )
 
             # import the dataset
-            df = pd.read_csv(self.external_data_path)
+            df = pd.read_csv(self.external_data_path, header=None)
             logger.info("Dataset imported")
 
             # Add an index column
