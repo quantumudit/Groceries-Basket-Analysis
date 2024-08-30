@@ -230,7 +230,7 @@ This license allows reusers to distribute, remix, adapt, and build upon the mate
 
 <!-- Shields Profile Links -->
 
-[linkedinbadge]: https://img.shields.io/badge/-uditkumarchatterjee-0e76a8?style=flat&labelColor=0e76a8&logo=linkedin&logoColor=white
+[linkedinbadge]: https://img.shields.io/badge/-quantumudit-0e76a8?style=flat&labelColor=0e76a8&logo=linkedin&logoColor=white
 [twitterbadge]: https://img.shields.io/badge/-quantumudit-000000?style=flat&labelColor=000000&logo=x&logoColor=white
 [gmailbadge]: https://img.shields.io/badge/quantumudit@gmail.com-D14836?style=flat&logo=gmail&logoColor=white
 [mediumbadge]: https://img.shields.io/badge/Medium-02b875?style=for-the-badge&logo=medium&logoColor=white
