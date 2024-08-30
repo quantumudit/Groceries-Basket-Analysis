@@ -159,7 +159,7 @@ The dashboard provides users with a clear and engaging way to explore data insig
 The following illustration demonstrates the interactive Power BI report to explore insights from the data:
 
 <p align='center'>
-  <a href="#">
+  <a href="https://app.powerbi.com/view?r=eyJrIjoiMWFlNGE1ZDAtNjg2YS00NTNkLTkwMjgtNzg5OGFkNWIxYWQ1IiwidCI6IjI5MmY4YmYxLTg2NzQtNGM0Ny05Yzk1LWMwNDYzZGQxMGRlNCJ9&embedImagePlaceholder=true&pageName=b67e3f421da06b0c0027">
     <img src="./resources/readme_images/powerbi_report.png" alt="Power BI Report" style="0">
   </a>
 </p>
@@ -205,7 +205,7 @@ This license allows reusers to distribute, remix, adapt, and build upon the mate
 
 <!-- External Links -->
 
-[powerbi_link]: WIP
+[powerbi_link]: https://app.powerbi.com/view?r=eyJrIjoiMWFlNGE1ZDAtNjg2YS00NTNkLTkwMjgtNzg5OGFkNWIxYWQ1IiwidCI6IjI5MmY4YmYxLTg2NzQtNGM0Ny05Yzk1LWMwNDYzZGQxMGRlNCJ9&embedImagePlaceholder=true&pageName=b67e3f421da06b0c0027
 [requirements]: ./requirements.txt
 
 <!-- Project Specific Links -->
