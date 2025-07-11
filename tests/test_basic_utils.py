@@ -1,12 +1,10 @@
-import os
-
-import pytest
 from box import Box
 
 from src.utils import basic_utils
 
 
 def test_read_yaml(tmp_path):
+    """Test reading a YAML file and returning a Box object."""
     yaml_content = "key: value"
     yaml_file = tmp_path / "test.yaml"
     yaml_file.write_text(yaml_content)
@@ -16,6 +14,7 @@ def test_read_yaml(tmp_path):
 
 
 def test_create_directories(tmp_path):
+    """Test creating multiple directories."""
     dir1 = tmp_path / "dir1"
     dir2 = tmp_path / "dir2"
     basic_utils.create_directories([str(dir1), str(dir2)], verbose=False)
@@ -23,6 +22,7 @@ def test_create_directories(tmp_path):
 
 
 def test_dict_to_table():
+    """Test converting a dictionary to a rich Table object."""
     data = {"a": 1, "b": 2}
     table = basic_utils.dict_to_table(data, "Test Table")
     assert hasattr(table, "add_row")
