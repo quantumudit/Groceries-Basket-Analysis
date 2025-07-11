@@ -1,10 +1,16 @@
 """
-This module contains the paths to the configuration and schema files. The paths are
-normalized to ensure they are in the correct format for the current operating system.
+constants.py
 
-The configuration file is expected to be in YAML format and contains various settings
-for the application. The schema file is also expected to be in YAML format and defines
-the structure of the data the application works with.
+This module defines global constants for the groceries basket analysis project.
+It provides normalized paths to configuration and schema files, ensuring compatibility
+across different operating systems.
+
+Constants:
+    CONFIGS (str): Normalized path to the main YAML configuration file.
+    # Add other constants here as needed, e.g., SCHEMA = normpath("conf/schema.yaml")
+
+Intended usage:
+    Import these constants wherever configuration or schema file paths are required.
 """
 
 from os.path import normpath

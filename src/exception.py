@@ -1,57 +1,56 @@
 """
-This module provides utility functions for handling errors and a custom
-exception class.
+exception.py
 
-The error_details function retrieves information about an error, such as
-the file name and line number where the error occurred. It takes an error
-object as input and returns a formatted error message.
+This module provides custom error handling utilities for the project.
+It includes a function for extracting detailed error information and a custom exception class
+that enhances error messages with file and line number context.
 
-The CustomException class is a subclass of the built-in Exception class. It
-overrides the __init__ and __str__ methods to provide a custom error message
-that includes the file name and line number where the exception was raised.
+Key functionalities:
+    - error_details: Retrieves the file name and line number where an error occurred.
+    - CustomException: Exception subclass that formats error messages with context for easier debugging.
+
+Intended usage:
+    Use CustomException throughout the project to raise and log errors with detailed context.
 """
 
 import sys
 
 
-def error_details(error) -> str:
+def error_details(error: Exception) -> str:
     """
-    Retrieves information about an error, such as the file name and line
-    number where the error occurred.
+    Retrieves detailed information about an error, including the file name and line number.
 
     Args:
-        error (object): The error object.
+        error (Exception): The error object.
 
     Returns:
-        str: A formatted error message that includes the file name and line
-        number where the error occurred.
+        str: A formatted error message with file name and line number.
     """
     _, _, exc_tb = sys.exc_info()
-    file_name = exc_tb.tb_frame.f_code.co_filename
-    line_number = exc_tb.tb_lineno
-    error_message = (
-        "Error occurred in Python script "
-        f"[{file_name}] at line [{line_number}]: [{str(error)}]"
-    )
+    if exc_tb is not None:
+        file_name = exc_tb.tb_frame.f_code.co_filename
+        line_number = exc_tb.tb_lineno
+    else:
+        file_name = "<unknown>"
+        line_number = -1
+    error_message = f"Error occurred in Python script [{file_name}] at line [{line_number}]: [{str(error)}]"
     return error_message
 
 
 class CustomException(Exception):
     """
-    A custom exception class that provides a custom error message including
-    the file name and line number where the exception was raised.
+    Custom exception class that provides detailed error messages including file name and line number.
 
     Args:
-        Exception (class): The built-in Exception class.
+        error_message (Exception): The original exception or error message.
 
     Attributes:
-        error_message (str): The formatted error message that includes the
-        file name and line number where the exception was raised.
+        error_message (str): The formatted error message with context.
     """
 
-    def __init__(self, error_message):
+    def __init__(self, error_message: Exception) -> None:
         super().__init__(error_message)
         self.error_message = error_details(error_message)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.error_message
