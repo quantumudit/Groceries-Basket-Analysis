@@ -1,8 +1,22 @@
 """
-This module provides utility functions for handling files and directories.
-It includes functions for reading YAML files, CSV files, creating directories
-and writing to CSV files. The functions are designed to handle exceptions and
-log relevant information for debugging purposes.
+basic_utils.py
+
+This module provides utility functions for file and directory operations, YAML handling,
+and data presentation for the groceries basket analysis project.
+
+Key functionalities:
+    - Reading YAML files into Box objects for easy attribute access.
+    - Creating directories with logging and error handling.
+    - Converting dictionaries to rich tables for console display.
+
+All functions are designed to handle exceptions gracefully and log relevant information
+for debugging and traceability.
+
+Dependencies:
+    - box.Box
+    - rich.table.Table
+    - src.logger.logger
+    - src.exception.CustomException
 """
 
 from os import makedirs
@@ -18,68 +32,56 @@ from src.logger import logger
 
 def read_yaml(yaml_path: str) -> Box:
     """
-    This function reads a YAML file from the provided path and returns
-    its content as a Box object.
+    Reads a YAML file from the provided path and returns its content as a Box object.
 
     Args:
-        yaml_path (str): The path to the YAML file to be read.
-
-    Raises:
-        CustomException: If there is any error while reading the file or
-        loading its content, a CustomException is raised with the original
-        exception as its argument.
+        yaml_path (str): Path to the YAML file to be read.
 
     Returns:
-        Box: The content of the YAML file, loaded into a Box object for
-        easy access and manipulation.
+        Box: Content of the YAML file, loaded into a Box object for easy access.
+
+    Raises:
+        CustomException: If there is any error while reading or parsing the file.
     """
     try:
         yaml_path = normpath(yaml_path)
         with open(yaml_path, "r", encoding="utf-8") as yf:
             content = Box(yaml.safe_load(yf))
-            logger.info("yaml file: %s loaded successfully", yaml_path)
+            logger.info("YAML file loaded successfully: %s", yaml_path)
             return content
     except Exception as e:
         logger.error(CustomException(e))
         raise CustomException(e) from e
 
 
-def create_directories(dir_paths: list, verbose=True) -> None:
+def create_directories(dir_paths: list[str], verbose: bool = True) -> None:
     """
-    This function creates directories at the specified paths.
+    Creates directories at the specified paths.
 
     Args:
-        dir_paths (list): A list of directory paths where directories need
-        to be created.
-        verbose (bool, optional): If set to True, the function will log
-        a message for each directory it creates. Defaults to True.
+        dir_paths (list[str]): List of directory paths to create.
+        verbose (bool, optional): If True, logs a message for each directory created. Defaults to True.
     """
     for path in dir_paths:
         makedirs(normpath(path), exist_ok=True)
         if verbose:
-            logger.info("created directory at: %s", path)
+            logger.info("Created directory at: %s", path)
 
 
-def dict_to_table(data: dict, title: str) -> any:
-    """_summary_
+def dict_to_table(data: dict, title: str) -> Table:
+    """
+    Converts a dictionary to a rich Table for console display.
 
     Args:
-        data (dict): _description_
-        title (str): _description_
+        data (dict): Dictionary to display.
+        title (str): Title for the table.
 
     Returns:
-        _type_: _description_
+        Table: A rich Table object representing the dictionary.
     """
-    # Create a table
     table = Table(title=title)
-
-    # Add columns
-    table.add_column(
-        "Dataframe Attributes", justify="left", style="bright_cyan", no_wrap=True
-    )
+    table.add_column("Dataframe Attributes", justify="left", style="bright_cyan", no_wrap=True)
     table.add_column("Value", justify="right", style="bright_magenta")
-
-    # Add rows
     for key, value in data.items():
         table.add_row(key, str(value))
     return table
