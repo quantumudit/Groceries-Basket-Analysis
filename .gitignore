@@ -1,45 +1,52 @@
-# Important Ignores #
-# ================= #
+# Global .gitignore
+# =================
 
-# Environments
+# Python Environments
 .env
-.venv
 .venv/
+.venv
 
 # VS Code Settings
 .vscode/
 
-# Directories & Files to ignore
-research/
-origin/
+# Project Directories to Ignore
 logs/
 archive/
+research/
+origin/
 
-# Power BI extensions
+# Power BI & Figma Files
 *.pbix
 *.pbit
 *.fig
 
-# Ignore code spell extension JSON
+# Editor/Tooling Files
 cspell.json
 todo.md
 
-# Byte-compiled / optimized / DLL files
+# Python Bytecode
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# Jupyter Notebooks
+.ipynb_checkpoints/
 
 # IPython
 profile_default/
 ipython_config.py
 
-# mkdocs documentation
-/site
+# Documentation
+/site/
 
-# mypy
+# Type Checking
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# System/OS Files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
+# Add any additional ignores below
