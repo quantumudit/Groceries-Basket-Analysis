@@ -1,0 +1,33 @@
+# Pre-commit hooks configuration
+# This file defines hooks that run automatically before each commit
+# Install with: pre-commit install
+
+repos:
+  # Ruff - Fast Python linter and formatter (replaces black, isort, flake8)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.3 # Keep in sync with pyproject.toml
+    hooks:
+      # Check for linting issues
+      - id: ruff
+        name: Ruff Linter
+        args: [--fix] # Automatically fix issues when possible
+      # Format code
+      - id: ruff-format
+        name: Ruff Formatter
+
+  # Basic file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Remove trailing whitespace
+      - id: trailing-whitespace
+      # Ensure files end with newline
+      - id: end-of-file-fixer
+      # Check YAML syntax
+      - id: check-yaml
+      # Check for large files
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+      # Prevent committing to main branch
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]
