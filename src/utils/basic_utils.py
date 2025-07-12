@@ -45,7 +45,7 @@ def read_yaml(yaml_path: str) -> Box:
     """
     try:
         yaml_path = normpath(yaml_path)
-        with open(yaml_path, encoding="utf-8") as yf:
+        with open(yaml_path, mode="r", encoding="utf-8") as yf:
             content = Box(yaml.safe_load(yf))
             logger.info("YAML file loaded successfully: %s", yaml_path)
             return content
