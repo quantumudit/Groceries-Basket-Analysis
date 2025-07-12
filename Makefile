@@ -72,13 +72,20 @@ notebook:
 ## clean: Remove cache files and build artifacts
 clean:
 	@echo "$(YELLOW)Cleaning cache files...$(NC)"
-	@if exist __pycache__ rmdir /s /q __pycache__
-	@if exist .pytest_cache rmdir /s /q .pytest_cache
-	@if exist .ruff_cache rmdir /s /q .ruff_cache
-	@if exist htmlcov rmdir /s /q htmlcov
-	@if exist .coverage del /q .coverage
-	@for /d /r . %%d in (__pycache__) do @if exist "%%d" rmdir /s /q "%%d"
-	@for /r . %%f in (*.pyc) do @if exist "%%f" del /q "%%f"
+	@if [ "$(OS)" = "Windows_NT" ]; then \
+		if exist __pycache__ rmdir /s /q __pycache__; \
+		if exist .pytest_cache rmdir /s /q .pytest_cache; \
+		if exist .ruff_cache rmdir /s /q .ruff_cache; \
+		if exist htmlcov rmdir /s /q htmlcov; \
+		if exist .coverage del /q .coverage; \
+		for /d /r . %%d in (__pycache__) do @if exist "%%d" rmdir /s /q "%%d"; \
+		for /r . %%f in (*.pyc) do @if exist "%%f" del /q "%%f"; \
+	else \
+		rm -rf __pycache__ .pytest_cache .ruff_cache htmlcov; \
+		rm -f .coverage; \
+		find . -type d -name "__pycache__" -exec rm -rf {} +; \
+		find . -type f -name "*.pyc" -exec rm -f {} +; \
+	fi
 	@echo "$(GREEN)Cache cleaned!$(NC)"
 
 ## pre-commit-install: Install pre-commit hooks
