@@ -45,7 +45,7 @@ def read_yaml(yaml_path: str) -> Box:
     """
     try:
         yaml_path = normpath(yaml_path)
-        with open(yaml_path, "r", encoding="utf-8") as yf:
+        with open(yaml_path, mode="r", encoding="utf-8") as yf:
             content = Box(yaml.safe_load(yf))
             logger.info("YAML file loaded successfully: %s", yaml_path)
             return content
@@ -80,7 +80,9 @@ def dict_to_table(data: dict, title: str) -> Table:
         Table: A rich Table object representing the dictionary.
     """
     table = Table(title=title)
-    table.add_column("Dataframe Attributes", justify="left", style="bright_cyan", no_wrap=True)
+    table.add_column(
+        "Dataframe Attributes", justify="left", style="bright_cyan", no_wrap=True
+    )
     table.add_column("Value", justify="right", style="bright_magenta")
     for key, value in data.items():
         table.add_row(key, str(value))

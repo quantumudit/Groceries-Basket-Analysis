@@ -44,9 +44,7 @@ class DataProcessor:
         self.external_data_path = normpath(self.configs.external_data_path)
 
         # Output file paths
-        self.transactions_data_path = normpath(
-            self.configs.transactions_data_path
-        )
+        self.transactions_data_path = normpath(self.configs.transactions_data_path)
         self.basket_data_path = normpath(self.configs.basket_data_path)
 
     def data_transformation(self) -> None:
@@ -116,32 +114,22 @@ class DataProcessor:
         logger.info("Unpivoted the products")
         return df_unpivot
 
-    def _standardize_product_names(
-        self, df_unpivot: pd.DataFrame
-    ) -> pd.DataFrame:
+    def _standardize_product_names(self, df_unpivot: pd.DataFrame) -> pd.DataFrame:
         df_unpivot["Products"] = df_unpivot["Products"].str.title()
         logger.info("Product names standardized to title case")
         return df_unpivot
 
     def _export_transactions(self, df_unpivot: pd.DataFrame) -> None:
         df_unpivot.to_csv(self.transactions_data_path, index=False)
-        logger.info(
-            "Transactions data saved at: %s", self.transactions_data_path
-        )
+        logger.info("Transactions data saved at: %s", self.transactions_data_path)
 
-    def _generate_basket_combinations(
-        self, df_unpivot: pd.DataFrame
-    ) -> pd.DataFrame:
+    def _generate_basket_combinations(self, df_unpivot: pd.DataFrame) -> pd.DataFrame:
         combinations_list = list(
             combinations(df_unpivot["Products"].unique().tolist(), 2)
         )
         logger.info("Generated all combination pairs of available products")
-        df_basket = pd.DataFrame(
-            combinations_list, columns=["Product-1", "Product-2"]
-        )
-        df_basket["Basket"] = (
-            df_basket["Product-1"] + " + " + df_basket["Product-2"]
-        )
+        df_basket = pd.DataFrame(combinations_list, columns=["Product-1", "Product-2"])
+        df_basket["Basket"] = df_basket["Product-1"] + " + " + df_basket["Product-2"]
         logger.info("Created the basket dataframe and basket column")
         return df_basket
 

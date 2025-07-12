@@ -1,0 +1,45 @@
+# Basic Ruff Configuration
+# Start simple, add more rules as needed
+
+# Basic settings
+line-length = 88
+target-version = "py313"
+
+# Exclude common directories
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".mypy_cache",
+    "logs",
+    "archive",
+]
+
+[lint]
+# Essential rules - equivalent to your previous tools
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # Pyflakes
+    "I",    # isort (import sorting)
+    "UP",   # pyupgrade (modern Python)
+    "B",    # flake8-bugbear (common bugs)
+]
+
+# Ignore rules that might be too strict initially
+ignore = [
+    "E501",  # Line too long (handled by formatter)
+]
+
+[format]
+# Formatting settings matching your previous Black setup
+quote-style = "double"  # Double quotes, single when avoiding escapes
+indent-style = "space"
+line-ending = "auto"
+
+[lint.isort]
+# Import sorting matching your previous isort setup
+known-first-party = ["src"]
+lines-after-imports = 2

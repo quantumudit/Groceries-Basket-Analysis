@@ -15,4 +15,5 @@ Intended usage:
 
 from os.path import normpath
 
+
 CONFIGS = normpath("conf/configs.yaml")
