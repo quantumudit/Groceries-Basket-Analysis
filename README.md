@@ -147,9 +147,9 @@ The raw data is transformed through a series of cleaning and preparation steps t
 The data transformation steps are automated using GitHub Actions. This automation allows the process to be executed seamlessly and consistently without manual intervention. The setup ensures that data extraction and preparation can be performed on-demand, enhancing efficiency and scalability.
 
 ### Data Analysis & Visualization
-In this phase, the transformed dataset is analyzed to extract meaningful insights and answer specific user queries. 
+In this phase, the transformed dataset is analyzed to extract meaningful insights and answer specific user queries.
 
-Various analytical techniques are employed to interpret the data, and findings are presented through interactive visualizations using Power BI. 
+Various analytical techniques are employed to interpret the data, and findings are presented through interactive visualizations using Power BI.
 
 The dashboard provides users with a clear and engaging way to explore data insights and make informed decisions based on the analysis.
 
@@ -175,7 +175,7 @@ Should you wish to inquire, offer feedback, or propose ideas, don’t hesitate t
 
 Discover and engage with my content on these platforms:
 
-[![Linktree Badge][linktreebadge]][linktree] [![Youtube Badge][youtubebadge]][youtube] [![GitHub Badge][githubbadge]][github] [![Medium Badge][mediumbadge]][medium]  [![Substack Badge][substackbadge]][substack] 
+[![Linktree Badge][linktreebadge]][linktree] [![Youtube Badge][youtubebadge]][youtube] [![GitHub Badge][githubbadge]][github] [![Medium Badge][mediumbadge]][medium]  [![Substack Badge][substackbadge]][substack]
 
 To express your support for my work, consider [buying me a coffee][buymeacoffee] or, [donate through Paypal][paypal]
 
@@ -210,7 +210,7 @@ This license allows reusers to distribute, remix, adapt, and build upon the mate
 
 <!-- Project Specific Links -->
 
-[main]: ./main.py 
+[main]: ./main.py
 
 <!-- Profile Links -->
 

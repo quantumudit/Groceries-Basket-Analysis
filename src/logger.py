@@ -21,6 +21,7 @@ import os
 import sys
 from datetime import datetime
 
+
 # Ensure logs directory exists in the current working directory
 logs_dir_path = os.path.join(os.getcwd(), "logs")
 os.makedirs(logs_dir_path, exist_ok=True)
