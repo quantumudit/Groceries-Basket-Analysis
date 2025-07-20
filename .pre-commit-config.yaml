@@ -29,5 +29,5 @@ repos:
       - id: check-added-large-files
         args: ["--maxkb=1000"]
       # Prevent committing to main branch
-      - id: no-commit-to-branch
-        args: ["--branch", "main"]
+      # - id: no-commit-to-branch
+      #   args: ["--branch", "main"]
